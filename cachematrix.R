@@ -1,35 +1,62 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## Write a short comment describing this function
-
+##
+##fucntion 1 to make a vector
+##
+makeVector <- function(x = numeric()) {
+  lamitjana <- NULL
+  set <- function(y) {
+    x <<- y
+    lamitjana <<- NULL
+  }
+  get <- function() x
+  setmean <- function(mean) lamitjana <<- mean
+  getmean <- function() lamitjana
+  list(set = set, get = get,
+       setmean = setmean,
+       getmean = getmean)
+}
+##
+##function 2 to make the mean, look at caché first
+##
+cachemean <- function(x, ...) {
+  lamitjana <- x$getmean()
+  if(!is.null(lamitjana)) {
+    message("if there's a cache, get there")
+    return(lamitjana)
+  }
+  data <- x$get()
+  lamitjana <- mean(data, ...)
+  x$setmean(lamitjana)
+  lamitjana
+}
+##
+##function 3 to make a matrix, like make a vector
+##
 makeCacheMatrix <- function(x = matrix()) {
-                inv <- NULL
+                lainversa <- NULL
                 set <- function(y) {
                   x <<- y
-                  inv <<- NULL
+                  lainversa <<- NULL
                 }
                 get <- function() x
-                setInverse <- function(inverse) inv <<- inverse
-                getInverse <- function() inv
+                setInverse <- function(inverse) lainversa <<- inverse
+                getInverse <- function() lainversa
                 list(set = set,
                      get = get,
                      setInverse = setInverse,
                      getInverse = getInverse)
 }
-
-
-## Write a short comment describing this function
-
+##
+##function 4 to compute the inverse of a square matrix by means of SOLVE function
+##
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
-        inv <- x$getInverse()
-                if (!is.null(inv)) {
-                  message("obtenint la matriu caché")
+        lainversa <- x$getInverse()
+                if (!is.null(lainversa)) {
+                  message("if there's a cache, get there")
                   return(inv)
                 }
-                mat <- x$get()
-                inv <- solve(mat, ...)
-                x$setInverse(inv)
-                inv
+                lamatriu <- x$get()
+                lainversa <- solve(lamatriu, ...)
+                x$setInverse(lainversa)
+                lainversa
 }
