@@ -56,4 +56,25 @@ cacheSolve <- function(x, ...) {
     x$setInverse(lainversa)
     lainversa
   }
+##
+## prova
+prova <- makecachematrix(matrix(c(10,4,2,20,5,3,10,6,5), 3,3))
+prova$get
 #
+#      [,1] [,2] [,3]
+# [1,]   10   20   10
+# [2,]    4    5    6
+# [3,]    2    3    5    
+#
+cacheSolve(prova)
+#             [,1]       [,2]       [,3]
+# [1,] -0.10000000  1.0000000 -1.0000000
+# [2,]  0.11428571 -0.4285714  0.2857143
+# [3,] -0.02857143 -0.1428571  0.4285714
+## to get the caché inverse matrix
+cacheSolve(prova)
+# obtenint la matriu caché
+#             [,1]       [,2]       [,3]
+# [1,] -0.10000000  1.0000000 -1.0000000
+# [2,]  0.11428571 -0.4285714  0.2857143
+# [3,] -0.02857143 -0.1428571  0.4285714
