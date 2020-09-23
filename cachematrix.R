@@ -32,31 +32,28 @@ cachemean <- function(x, ...) {
 ##function 3 to make a matrix, like make a vector
 ##
 makeCacheMatrix <- function(x = matrix()) {
-                lainversa <- NULL
-                set <- function(y) {
-                  x <<- y
-                  lainversa <<- NULL
-                }
-                get <- function() x
-                setInverse <- function(inverse) lainversa <<- inverse
-                getInverse <- function() lainversa
-                list(set = set,
-                     get = get,
-                     setInverse = setInverse,
-                     getInverse = getInverse)
+  lainversa <- NULL
+  set <- function(y) {
+    x <<- y
+    lainversa <<- NULL
+  }
+  get <- function() x
+  setInverse <- function(inverse) lainversa <<- inverse
+  getInverse <- function() lainversa
+  list(set = set, get = get, setInverse = setInverse, getInverse = getInverse)
 }
 ##
 ##function 4 to compute the inverse of a square matrix by means of SOLVE function
 ##
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
-        lainversa <- x$getInverse()
-                if (!is.null(lainversa)) {
-                  message("if there's a cache, get there")
-                  return(inv)
-                }
-                lamatriu <- x$get()
-                lainversa <- solve(lamatriu, ...)
-                x$setInverse(lainversa)
-                lainversa
-}
+  lainversa <- x$getInverse()
+  if (!is.null(lainversa)) {
+    message("obtenint la matriu caché")
+      return(lainversa)
+    }
+    lamatriu <- x$get()
+    lainversa <- solve(lamatriu, ...)
+    x$setInverse(lainversa)
+    lainversa
+  }
+#
